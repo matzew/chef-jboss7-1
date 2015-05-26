@@ -29,8 +29,16 @@ ark 'jboss' do
   version node['jboss7']['jboss_version']
 end
 
-template "#{node['jboss7']['jboss_home']}/standalone/configuration/standalone.xml" do
-  source 'standalone_xml.erb'
+template "#{node['jboss7']['jboss_home']}/standalone/configuration/standalone-full-ha.xml" do
+  source 'standalone_full_ha_xml.erb'
+  owner node['jboss7']['jboss_user']
+  group node['jboss7']['jboss_group']
+  mode '0644'
+  notifies :restart, 'service[jboss]', :delayed
+end
+
+template "#{node['jboss7']['jboss_home']}/standalone/configuration/standalone-full.xml" do
+  source 'standalone_full_xml.erb'
   owner node['jboss7']['jboss_user']
   group node['jboss7']['jboss_group']
   mode '0644'
@@ -65,6 +73,7 @@ template '/etc/init.d/jboss' do
   owner 'root'
   group node['root_group']
   notifies :enable, 'service[jboss]', :delayed
+  notifies :start, 'service[jboss]', :delayed
   notifies :restart, 'service[jboss]', :delayed
 end
 
