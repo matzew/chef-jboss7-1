@@ -37,6 +37,14 @@ template "#{node['jboss7']['jboss_home']}/standalone/configuration/standalone.xm
   notifies :restart, 'service[jboss]', :delayed
 end
 
+template "#{node['jboss7']['jboss_home']}/standalone/configuration/standalone-full.xml" do
+  source 'standalone_full_xml.erb'
+  owner node['jboss7']['jboss_user']
+  group node['jboss7']['jboss_group']
+  mode '0644'
+  notifies :restart, 'service[jboss]', :delayed
+end
+
 template "#{node['jboss7']['jboss_home']}/bin/standalone.conf" do
   source 'standalone_conf.erb'
   owner node['jboss7']['jboss_user']
