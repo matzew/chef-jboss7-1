@@ -73,6 +73,7 @@ template '/etc/init.d/jboss' do
   owner 'root'
   group node['root_group']
   notifies :enable, 'service[jboss]', :delayed
+  notifies :start, 'service[jboss]', :delayed
   notifies :restart, 'service[jboss]', :delayed
 end
 
@@ -83,6 +84,6 @@ jboss7_user node['jboss7']['admin_user'] do
 end
 
 service 'jboss' do
-  supports :restart => true
-  action :nothing
+  supports :restart => false
+  action :start
 end
