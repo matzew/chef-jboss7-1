@@ -22,7 +22,7 @@ case "$1" in
         #sudo -u jboss sh ${JBOSS_HOME}/bin/standalone.sh
 
         #updated:
-        start-stop-daemon --start --quiet --background --chuid web --exec ${JBOSS_HOME}/bin/standalone.sh -- $EAP_OPTS
+        start-stop-daemon --start --quiet --background --chuid jboss7 --exec ${JBOSS_HOME}/bin/standalone.sh -- $EAP_OPTS
     ;;
     stop)
         echo "Stopping JBoss EAP AS 6.4.0"
@@ -30,14 +30,14 @@ case "$1" in
         #sudo -u jboss sh ${JBOSS_HOME}/bin/jboss-admin.sh --connect command=:shutdown
 
         #updated:
-        start-stop-daemon --start --quiet --background --chuid web --exec ${JBOSS_HOME}/bin/jboss-admin.sh -- --connect command=:shutdown
+        start-stop-daemon --start --quiet --background --chuid jboss7 --exec ${JBOSS_HOME}/bin/jboss-admin.sh -- --connect command=:shutdown
     ;;
     restart)
         echo "Stopping JBoss EAP AS 6.4.0"
-        start-stop-daemon --start --quiet --background --chuid web --exec ${JBOSS_HOME}/bin/jboss-admin.sh -- --connect command=:shutdown
+        start-stop-daemon --start --quiet --background --chuid jboss7 --exec ${JBOSS_HOME}/bin/jboss-admin.sh -- --connect command=:shutdown
 
         echo "Starting JBoss EAP AS 6.4.0"
-        start-stop-daemon --start --quiet --background --chuid web --exec ${JBOSS_HOME}/bin/standalone.sh -- $EAP_OPTS
+        start-stop-daemon --start --quiet --background --chuid jboss7 --exec ${JBOSS_HOME}/bin/standalone.sh -- $EAP_OPTS
     ;;
     *)
         echo "Usage: /etc/init.d/jboss {start|stop|restart}"
