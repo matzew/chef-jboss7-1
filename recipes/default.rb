@@ -84,6 +84,6 @@ jboss7_user node['jboss7']['admin_user'] do
 end
 
 service 'jboss' do
-  supports :restart => false
-  action :start
+  supports :restart => true
+  action :nothing
 end
