@@ -84,17 +84,17 @@
     </management>
     <profile>
         <subsystem xmlns="urn:jboss:domain:logging:1.5">
-			<console-handler name="RESTEASY">
-			    <formatter>
-			        <pattern-formatter pattern="%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n"/>
-			    </formatter>
-			</console-handler>
-			<logger category="org.jboss.resteasy" use-parent-handlers="false">
-			    <level name="ERROR"/>
-			    <handlers>
-			        <handler name="RESTEASY"/>
-			    </handlers>
-			</logger>
+            <console-handler name="RESTEASY">
+                <formatter>
+                    <pattern-formatter pattern="%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n"/>
+                </formatter>
+            </console-handler>
+            <logger category="org.jboss.resteasy" use-parent-handlers="false">
+                <level name="ERROR"/>
+                <handlers>
+                    <handler name="RESTEASY"/>
+                </handlers>
+            </logger>
             <console-handler name="CONSOLE">
                 <level name="INFO"/>
                 <formatter>
