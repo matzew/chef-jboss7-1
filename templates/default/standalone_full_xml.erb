@@ -152,7 +152,7 @@
                         <password>sa</password>
                     </security>
                 </datasource>
-                <datasource jndi-name="java:jboss/datasources/UnifiedPushDS" pool-name="UnifiedPushDS" enabled="true"use-java-context="true" use-ccm="true">
+                <datasource jndi-name="java:jboss/datasources/UnifiedPushDS" pool-name="UnifiedPushDS" enabled="true" use-java-context="true" use-ccm="true">
                     <connection-url>jdbc:mysql://localhost:3306/unifiedpush?useUnicode=true&amp;amp;characterEncoding=UTF-8</connection-url>
                     <driver>mysqlup</driver>
                     <security>
@@ -163,13 +163,12 @@
                         <check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
                         <background-validation>true</background-validation>
                         <background-validation-millis>60000</background-validation-millis>
-                        <!--<validate-on-match>true</validate-on-match>-->
                     </validation>
                     <pool>
                         <flush-strategy>IdleConnections</flush-strategy>
                     </pool>
                 </datasource>
-                <datasource jndi-name="java:jboss/datasources/KeycloakDS" pool-name="KeycloakDS" enabled="true" use-ccm="true">
+                <datasource jndi-name="java:jboss/datasources/KeycloakDS" pool-name="KeycloakDS" enabled="true" use-java-context="true" use-ccm="true">
                     <connection-url>jdbc:mysql://localhost:3306/keycloak?useUnicode=true&amp;amp;characterEncoding=UTF-8</connection-url>
                     <driver>mysqlup</driver>
                     <security>
@@ -180,7 +179,6 @@
                         <check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
                         <background-validation>true</background-validation>
                         <background-validation-millis>60000</background-validation-millis>
-                        <!--<validate-on-match>true</validate-on-match>-->
                     </validation>
                     <pool>
                         <flush-strategy>IdleConnections</flush-strategy>
