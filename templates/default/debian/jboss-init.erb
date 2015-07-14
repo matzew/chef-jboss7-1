@@ -14,7 +14,7 @@
 [ -r /etc/profile.d/jboss.sh ] && . /etc/profile.d/jboss.sh
 
 JBOSS_HOME=/opt/jboss
-EAP_OPTS="-b 0.0.0.0 --server-config=standalone-full-ha.xml"
+EAP_OPTS="-b 0.0.0.0 --server-config=standalone-full.xml"
 case "$1" in
     start)
         echo "Starting EAP AS 6.4.0"
