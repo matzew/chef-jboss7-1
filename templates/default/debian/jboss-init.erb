@@ -15,9 +15,7 @@
 
 JBOSS_HOME=<%= node['jboss7']['jboss_home'] -%>
 
-JBOSS_LOG_DIR=<%= node['jboss7']['log_dir'] -%>
-
-EAP_OPTS="-Djboss.server.log.dir=${JBOSS_LOG_DIR} -b 0.0.0.0 --server-config=standalone-full.xml"
+EAP_OPTS="-Djboss.server.log.dir=<%= node['jboss7']['log_dir'] -%> -b 0.0.0.0 --server-config=standalone-full.xml"
 case "$1" in
     start)
         echo "Starting EAP AS 6.4.0"
