@@ -13,8 +13,9 @@
 [ -r /etc/profile.d/java.sh ] && . /etc/profile.d/java.sh
 [ -r /etc/profile.d/jboss.sh ] && . /etc/profile.d/jboss.sh
 
-JBOSS_HOME=/opt/jboss
-EAP_OPTS="-b 0.0.0.0 --server-config=standalone-full.xml"
+JBOSS_HOME=<%= node['jboss7']['jboss_home'] -%>
+
+EAP_OPTS="-Djboss.server.log.dir=<%= node['jboss7']['log_dir'] -%> -Djboss.server.config.dir=<%= node['jboss7']['config_dir'] -%> -b 0.0.0.0 --server-config=standalone-full.xml"
 case "$1" in
     start)
         echo "Starting EAP AS 6.4.0"

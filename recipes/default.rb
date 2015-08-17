@@ -29,7 +29,7 @@ ark 'jboss' do
   version node['jboss7']['jboss_version']
 end
 
-template "#{node['jboss7']['jboss_home']}/standalone/configuration/standalone-full.xml" do
+template "#{node['jboss7']['config_dir']}/standalone-full.xml" do
   source 'standalone_full_xml.erb'
   owner node['jboss7']['jboss_user']
   group node['jboss7']['jboss_group']
