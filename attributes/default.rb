@@ -1,5 +1,7 @@
 default['jboss7']['jboss_path'] = '/opt'
 default['jboss7']['jboss_home'] = "#{node['jboss7']['jboss_path']}/jboss"
+default['jboss7']['log_dir'] = "#{node['jboss7']['jboss_home']}/standalone/logggy"
+default['jboss7']['conf_dir'] = "#{node['jboss7']['jboss_home']}/standalone/configuration"
 default['jboss7']['jboss_user'] = 'jboss7'
 default['jboss7']['jboss_group'] = 'web'
 default['jboss7']['jboss_version'] = '7.1.1.Final'
