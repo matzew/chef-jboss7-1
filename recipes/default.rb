@@ -35,6 +35,16 @@ directory node['jboss7']['log_dir'] do
   action :create
 end
 
+## different location for log files
+if node['jboss7']['log_dir'] != "#{node['jboss7']['jboss_home']}/standalone/log"
+  
+  link "#{node['jboss7']['jboss_home']}/standalone/log" do
+    to      "#{node['jboss7']['log_dir']}"
+    not_if "test -L #{node['jboss7']['jboss_home']}/standalone/log"    
+  end
+  
+end
+
 ## different location for configuration files
 if node['jboss7']['config_dir'] != "#{node['jboss7']['jboss_home']}/standalone/configuration"
 
