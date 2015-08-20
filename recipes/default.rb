@@ -77,6 +77,38 @@ template "#{node['jboss7']['config_dir']}/logging.properties" do
   notifies :restart, 'service[jboss]', :delayed
 end
 
+template "#{node['jboss7']['config_dir']}/application-roles.properties" do
+  source 'application_roles_properties.erb'
+  owner node['jboss7']['jboss_user']
+  group node['jboss7']['jboss_group']
+  mode '0644'
+  notifies :restart, 'service[jboss]', :delayed
+end
+
+template "#{node['jboss7']['config_dir']}/application-users.properties" do
+  source 'application_users_properties.erb'
+  owner node['jboss7']['jboss_user']
+  group node['jboss7']['jboss_group']
+  mode '0644'
+  notifies :restart, 'service[jboss]', :delayed
+end
+
+template "#{node['jboss7']['config_dir']}/mgmt-groups.properties" do
+  source 'mgmt_groups_properties.erb'
+  owner node['jboss7']['jboss_user']
+  group node['jboss7']['jboss_group']
+  mode '0644'
+  notifies :restart, 'service[jboss]', :delayed
+end
+
+template "#{node['jboss7']['config_dir']}/mgmt-users.properties" do
+  source 'mgmt_users_properties.erb'
+  owner node['jboss7']['jboss_user']
+  group node['jboss7']['jboss_group']
+  mode '0644'
+  notifies :restart, 'service[jboss]', :delayed
+end
+
 template "#{node['jboss7']['jboss_home']}/bin/standalone.conf" do
   source 'standalone_conf.erb'
   owner node['jboss7']['jboss_user']
