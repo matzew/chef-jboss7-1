@@ -55,7 +55,7 @@ if node['jboss7']['config_dir'] != "#{node['jboss7']['jboss_home']}/standalone/c
   end
 
   link "#{node['jboss7']['jboss_home']}/standalone/configuration" do
-    to      "#{node['jboss7_feedhenry']['config_dir']}"
+    to      "#{node['jboss7']['config_dir']}"
     not_if "test -L #{node['jboss7']['jboss_home']}/standalone/configuration"    
   end
   
