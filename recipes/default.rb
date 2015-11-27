@@ -76,7 +76,6 @@ template "#{node['jboss7']['config_dir']}/standalone-full.xml" do
   owner node['jboss7']['jboss_user']
   group node['jboss7']['jboss_group']
   mode '0644'
-  notifies :restart, 'service[jboss]', :delayed
 end
 
 template "#{node['jboss7']['config_dir']}/logging.properties" do
@@ -84,7 +83,6 @@ template "#{node['jboss7']['config_dir']}/logging.properties" do
   owner node['jboss7']['jboss_user']
   group node['jboss7']['jboss_group']
   mode '0644'
-  notifies :restart, 'service[jboss]', :delayed
 end
 
 template "#{node['jboss7']['config_dir']}/application-roles.properties" do
@@ -92,7 +90,6 @@ template "#{node['jboss7']['config_dir']}/application-roles.properties" do
   owner node['jboss7']['jboss_user']
   group node['jboss7']['jboss_group']
   mode '0644'
-  notifies :restart, 'service[jboss]', :delayed
 end
 
 template "#{node['jboss7']['config_dir']}/application-users.properties" do
@@ -100,7 +97,6 @@ template "#{node['jboss7']['config_dir']}/application-users.properties" do
   owner node['jboss7']['jboss_user']
   group node['jboss7']['jboss_group']
   mode '0644'
-  notifies :restart, 'service[jboss]', :delayed
 end
 
 template "#{node['jboss7']['config_dir']}/mgmt-groups.properties" do
@@ -108,7 +104,6 @@ template "#{node['jboss7']['config_dir']}/mgmt-groups.properties" do
   owner node['jboss7']['jboss_user']
   group node['jboss7']['jboss_group']
   mode '0644'
-  notifies :restart, 'service[jboss]', :delayed
 end
 
 template "#{node['jboss7']['config_dir']}/mgmt-users.properties" do
@@ -116,7 +111,6 @@ template "#{node['jboss7']['config_dir']}/mgmt-users.properties" do
   owner node['jboss7']['jboss_user']
   group node['jboss7']['jboss_group']
   mode '0644'
-  notifies :restart, 'service[jboss]', :delayed
 end
 
 template "#{node['jboss7']['jboss_home']}/bin/standalone.conf" do
@@ -124,7 +118,6 @@ template "#{node['jboss7']['jboss_home']}/bin/standalone.conf" do
   owner node['jboss7']['jboss_user']
   group node['jboss7']['jboss_group']
   mode '0644'
-  notifies :restart, "service[jboss]", :delayed
 end
 
 dist_dir, conf_dir = value_for_platform_family(
@@ -138,7 +131,6 @@ template '/etc/jboss-as.conf' do
   owner 'root'
   group node['root_group']
   only_if { platform_family?("rhel") }
-  notifies :restart, 'service[jboss]', :delayed
 end
 
 template '/etc/init.d/jboss' do
@@ -147,14 +139,11 @@ template '/etc/init.d/jboss' do
   owner 'root'
   group node['root_group']
   notifies :enable, 'service[jboss]', :delayed
-  notifies :start, 'service[jboss]', :delayed
-  notifies :restart, 'service[jboss]', :delayed
 end
 
 jboss7_user node['jboss7']['admin_user'] do
   password node['jboss7']['admin_pass']
   action :create
-  notifies :restart, 'service[jboss]', :delayed
 end
 
 service 'jboss' do
